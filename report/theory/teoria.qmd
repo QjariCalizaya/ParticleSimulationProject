@@ -1,0 +1,17 @@
+﻿# base teorica
+
+## formula basica
+
+### segunda ley de newton
+
+- $$\vec{F} = m \vec{a}$$
+
+
+- $\vec{a}=\frac{\vec{F}}{m}$
+
+## metodo de euler
+
+- $v_{n+1} = v_n + a \Delta t$
+
+- $x_{n+1} = x_n + v_n \Delta t$
+
