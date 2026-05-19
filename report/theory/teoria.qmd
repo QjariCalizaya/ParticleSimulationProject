@@ -4,8 +4,7 @@
 
 ### segunda ley de newton
 
-- $$\vec{F} = m \vec{a}$$
-
+- $\vec{F} = m \vec{a}$
 
 - $\vec{a}=\frac{\vec{F}}{m}$
 
@@ -13,21 +12,30 @@
 
 parte de las ecuaciones basicas de movimiento:
 
-- $v = v + a \Delta t$
+- $v_{t+\Delta t} = v_t + a_t \Delta t$
 
-- $x = x + v \Delta t$
+- $x_{t+\Delta t} = x_t + v_t \Delta t$
 
-- $v_{n+1} = v_n + a \Delta t$
+----------------------
 
-- $x_{n+1} = x_n + v_n \Delta t$
+
+- $v = v + a * \Delta t$
+
+- $x = x + v * \Delta t$
 
 Euler dice:
 
-- “Si ahora mismo la partícula tiene esta velocidad, entonces en el próximo instante estará un poquito más adelante.”
+ “Si ahora mismo la partícula tiene esta velocidad, entonces en el próximo instante estará un poquito más adelante.”
 
 Y:
 
-- “Si tiene esta aceleración, entonces la velocidad cambiará un poquito.”
+“Si tiene esta aceleración, entonces la velocidad cambiará un poquito.”
+
+ventajas:
+
+- es fácil de implementar,
+- es rápido de calcular,
+
 
 desventajas: 
 
@@ -38,4 +46,58 @@ desventajas:
 - puede volver inestable la simulación.
 
 En simulaciones físicas largas, Euler suele ser insuficiente.
+
+## metodo de verlet
+
+verlet "recuerda" la posición anterior, y la usa para calcular la nueva posición:
+
+formula:
+
+$X_{new} = 2X_{current} - X_{previous} + a*\Delta t^2$
+
+ventajas: 
+
+- mucho mas estable que euler,
+- conserva la energía,
+- excelente para simular gravedad, orbitas, resortes, cuerdas, telas.
+
+desventajas:
+
+- necesita almacenar la posición anterior y la actual,
+- no es tan intuitivo como euler,
+
+
+### como funciona verlet?
+
+debido a que una computadora no puede calcular de forma continua el tiempo entonces se es necesario discretizar las ecuaciones continuas de movimiento. ahi es donde aparecen los metodos de integracion numerica como euler y verlet.
+
+el metodo verlet usa expansion de taylor para aproximar la posición futura y reduce el error al usar la posición anterior
+
+## concepto de derivada
+
+### concepto intuitivo
+
+la derivada mide que tan rapido cambia algo
+ejemplo: la derivada de la posicion 
+
+- $position = x(t)$
+
+
+- $velocity = \frac{dx}{dt}$
+
+significa "que tan rapido cambia la posicion con respecto al tiempo"
+
+- $acceleration = \frac{dv}{dt} = \frac{d^2x}{dt^2}$
+
+significa "que tan rapido cambia la velocidad con respecto al tiempo"
+
+### concepto formal
+
+la derivada de una funcion $f(x)$ con respecto a $x$ se define como el limite:
+
+$\frac{dx}{dt} = lim_{\Delta t -> 0} \frac{x(t+\Delta t) - x(t)}{\Delta t}$
+
+donde el intervalo teporal $\Delta t$ se vuelve infinitamente pequeño
+
+## aproximar derivadas
 

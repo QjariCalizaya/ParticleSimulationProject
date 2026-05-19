@@ -38,6 +38,35 @@ ul.task-list li input[type="checkbox"] {
 <link href="teoria_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="teoria_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -50,7 +79,76 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-
+<section id="base-teorica" class="level1">
+<h1>base teorica</h1>
+<section id="formula-basica" class="level2">
+<h2 class="anchored" data-anchor-id="formula-basica">formula basica</h2>
+<section id="segunda-ley-de-newton" class="level3">
+<h3 class="anchored" data-anchor-id="segunda-ley-de-newton">segunda ley de newton</h3>
+<ul>
+<li><p><span class="math inline">\(\vec{F} = m \vec{a}\)</span></p></li>
+<li><p><span class="math inline">\(\vec{a}=\frac{\vec{F}}{m}\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="metodo-de-euler" class="level2">
+<h2 class="anchored" data-anchor-id="metodo-de-euler">metodo de euler</h2>
+<p>parte de las ecuaciones basicas de movimiento:</p>
+<ul>
+<li><p><span class="math inline">\(v_{t+\Delta t} = v_t + a_t \Delta t\)</span></p></li>
+<li><p><span class="math inline">\(x_{t+\Delta t} = x_t + v_t \Delta t\)</span></p></li>
+</ul>
+<hr>
+<ul>
+<li><p><span class="math inline">\(v = v + a * \Delta t\)</span></p></li>
+<li><p><span class="math inline">\(x = x + v * \Delta t\)</span></p></li>
+</ul>
+<p>Euler dice:</p>
+<ul>
+<li>“Si ahora mismo la partícula tiene esta velocidad, entonces en el próximo instante estará un poquito más adelante.”</li>
+</ul>
+<p>Y:</p>
+<ul>
+<li>“Si tiene esta aceleración, entonces la velocidad cambiará un poquito.”</li>
+</ul>
+<p>ventajas:</p>
+<ul>
+<li>es fácil de implementar,</li>
+<li>es rápido de calcular,</li>
+</ul>
+<p>desventajas:</p>
+<ul>
+<li>acumula mucho error,</li>
+<li>pierde energía,</li>
+<li>las órbitas explotan,</li>
+<li>los resortes vibran mal,</li>
+<li>puede volver inestable la simulación.</li>
+</ul>
+<p>En simulaciones físicas largas, Euler suele ser insuficiente.</p>
+</section>
+<section id="metodo-de-verlet" class="level2">
+<h2 class="anchored" data-anchor-id="metodo-de-verlet">metodo de verlet</h2>
+<p>verlet “recuerda” la posición anterior, y la usa para calcular la nueva posición:</p>
+<p>formula:</p>
+<p><span class="math inline">\(X_{new} = 2X_{current} - X_{previous} + a*\delta t^2\)</span></p>
+<p>ventajas:</p>
+<ul>
+<li>mucho mas estable que euler,</li>
+<li>conserva la energía,</li>
+<li>excelente para simular gravedad, orbitas, resortes, cuerdas, telas.</li>
+</ul>
+<p>desventajas:</p>
+<ul>
+<li>necesita almacenar la posición anterior y la actual,</li>
+<li>no es tan intuitivo como euler,</li>
+</ul>
+<section id="como-funciona-verlet" class="level3">
+<h3 class="anchored" data-anchor-id="como-funciona-verlet">como funciona verlet?</h3>
+<p>debido a que una computadora no puede calcular de forma continua el tiempo entonces se es necesario discretizar las ecuaciones continuas de movimiento. ahi es donde aparecen los metodos de integracion numerica como euler y verlet.</p>
+<p>el metodo verlet usa expansion de taylor para aproximar la posición futura y reduce el error al usar la posición anterior</p>
+</section>
+</section>
+</section>
 
 </main>
 <!-- /main column -->
