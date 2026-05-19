@@ -11,7 +11,31 @@
 
 ## metodo de euler
 
+parte de las ecuaciones basicas de movimiento:
+
+- $v = v + a \Delta t$
+
+- $x = x + v \Delta t$
+
 - $v_{n+1} = v_n + a \Delta t$
 
 - $x_{n+1} = x_n + v_n \Delta t$
+
+Euler dice:
+
+- “Si ahora mismo la partícula tiene esta velocidad, entonces en el próximo instante estará un poquito más adelante.”
+
+Y:
+
+- “Si tiene esta aceleración, entonces la velocidad cambiará un poquito.”
+
+desventajas: 
+
+- acumula mucho error,
+- pierde energía,
+- las órbitas explotan,
+- los resortes vibran mal,
+- puede volver inestable la simulación.
+
+En simulaciones físicas largas, Euler suele ser insuficiente.
 
