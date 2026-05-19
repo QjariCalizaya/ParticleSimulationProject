@@ -1,4 +1,4 @@
-﻿mutable struct Particle
+mutable struct Particle
     mass::Float64
     position::Vector{Float64}
     velocity::Vector{Float64}
