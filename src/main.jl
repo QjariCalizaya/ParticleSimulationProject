@@ -1,61 +1,7 @@
-﻿using GLMakie
-using LinearAlgebra
-
-const GROUND_Z = 0.0
-const g = 9.81
-const k = 8.9875517923e9
-
-mutable struct Particle3D
-    mass::Float64
-    charge::Float64
-    position::Vector{Float64}
-    velocity::Vector{Float64}
-    force::Vector{Float64}
-end
-
-function reset_forces!(particles)
-    for p in particles
-        p.force = [0.0, 0.0, -p.mass * g]
-    end
-end
-
-function apply_coulomb_forces!(particles)
-    n = length(particles)
-
-    for i in 1:n-1
-        for j in i+1:n
-            pi = particles[i]
-            pj = particles[j]
-
-            r_vec = pj.position - pi.position
-            distance = norm(r_vec)
-
-            if distance < 1e-6
-                continue
-            end
-
-            direction = r_vec / distance
-            force_magnitude = k * pi.charge * pj.charge / distance^2
-            force = force_magnitude * direction
-
-            pi.force += force
-            pj.force -= force
-        end
-    end
-end
-
-function euler_step!(particles, dt)
-    for p in particles
-        acceleration = p.force / p.mass
-        p.velocity += acceleration * dt
-        p.position += p.velocity * dt
-
-        if p.position[3] < GROUND_Z
-            p.position[3] = GROUND_Z
-            p.velocity[3] = -0.6 * p.velocity[3]
-        end
-    end
-end
+﻿include("particles.jl")
+include("physics.jl")
+include("integrators.jl")
+include("visualization.jl")
 
 function simulate()
     dt = 0.001
@@ -84,23 +30,10 @@ function simulate()
         euler_step!(particles, dt)
     end
 
-    fig = Figure(size = (900, 700))
-    ax = Axis3(
-        fig[1, 1],
-        xlabel = "x",
-        ylabel = "y",
-        zlabel = "z",
-        title = "Simulación 3D de partículas cargadas con gravedad"
+    plot_trajectories_3d(
+        trajectories,
+        "plots/particles_3d.png"
     )
-
-    for i in eachindex(trajectories)
-        xs, ys, zs = trajectories[i]
-        lines!(ax, xs, ys, zs, linewidth = 2)
-        scatter!(ax, [xs[end]], [ys[end]], [zs[end]], markersize = 12)
-    end
-
-    save("plots/particles_3d.png", fig)
-    display(fig)
 end
 
 simulate()
