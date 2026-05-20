@@ -8,7 +8,12 @@
 
 - $\vec{a}=\frac{\vec{F}}{m}$
 
-## metodo de euler
+## simulacion de movimiento
+
+debido a que una computadora no puede calcular de forma continua el tiempo entonces se es necesario discretizar las ecuaciones continuas de movimiento. ahi es donde aparecen los metodos de integracion numerica como euler y verlet.
+
+
+### metodo de euler
 
 parte de las ecuaciones basicas de movimiento:
 
@@ -47,7 +52,13 @@ desventajas:
 
 En simulaciones físicas largas, Euler suele ser insuficiente.
 
-## metodo de verlet
+
+
+
+
+### metodo de verlet
+
+el metodo verlet usa expansion de taylor para aproximar la posición futura y reduce el error al usar la posición anterior
 
 verlet "recuerda" la posición anterior, y la usa para calcular la nueva posición:
 
@@ -67,11 +78,6 @@ desventajas:
 - no es tan intuitivo como euler,
 
 
-### como funciona verlet?
-
-debido a que una computadora no puede calcular de forma continua el tiempo entonces se es necesario discretizar las ecuaciones continuas de movimiento. ahi es donde aparecen los metodos de integracion numerica como euler y verlet.
-
-el metodo verlet usa expansion de taylor para aproximar la posición futura y reduce el error al usar la posición anterior
 
 ## concepto de derivada
 
@@ -101,3 +107,4 @@ donde el intervalo teporal $\Delta t$ se vuelve infinitamente pequeño
 
 ## aproximar derivadas
 
+en computacion usamos valores muy pequeños de $\Delta t$ para aproximar la derivada como $\Delta t = 0.016$
