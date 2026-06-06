@@ -1,0 +1,6 @@
+# Metodo de euler
+
+## definicion
+
+El método de Euler es un método numérico para aproximar soluciones de ecuaciones diferenciales ordinarias cuando no queremos, no podemos o no sabemos resolverlas de forma exacta.
+
