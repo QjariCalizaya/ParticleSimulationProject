@@ -1,6 +1,6 @@
 ﻿using LinearAlgebra
 
-const G = 6.67430e-11
+const G =1  #6.67430e-11
 const k = 8.9875517923e9
 const MIN_DISTANCE = 1e-6
 
