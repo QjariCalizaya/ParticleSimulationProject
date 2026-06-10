@@ -1,6 +1,6 @@
 ﻿using LinearAlgebra
 
-const G =1  #6.67430e-11
+const G = 6.67430e-11
 const k = 8.9875517923e9
 const MIN_DISTANCE = 1e-6
 
@@ -44,6 +44,8 @@ end
 function kinetic_energy(particles)
     return sum(0.5 * p.mass * dot(p.velocity, p.velocity) for p in particles)
 end
+
+
 
 function potential_energy_coulomb(particles)
     n = length(particles)
