@@ -120,7 +120,7 @@ Label(
 
 duration_slider = Slider(
     control_panel[4, 1:2],
-    range = 5.0:1.0:100.0,
+    range = 5.0:5.0:10000.0,
     startvalue = 20.0
 )
 
@@ -374,7 +374,7 @@ function apply_preset!(preset_name)
         method_menu.selection[] = "Верле"
 
         set_slider!(dt_slider, 0.005)
-        set_slider!(duration_slider, 20.0)
+        set_slider!(duration_slider, 100.0)
 
         set_slider!(m1, 10.0)
         set_slider!(m2, 10.0)
@@ -382,7 +382,7 @@ function apply_preset!(preset_name)
 
         set_slider!(q1, 0.001)
         set_slider!(q2, -0.001)
-        set_slider!(q3, 0.0)
+        set_slider!(q3, -0.0002)
 
         set_slider!(x1, -10.0)
         set_slider!(y1, 0.0)
@@ -397,16 +397,16 @@ function apply_preset!(preset_name)
         set_slider!(z3, 0.0)
 
         set_slider!(vx1, 0.0)
-        set_slider!(vy1, 1.0)
+        set_slider!(vy1, 2.5)
         set_slider!(vz1, 0.0)
 
         set_slider!(vx2, 0.0)
-        set_slider!(vy2, -1.0)
+        set_slider!(vy2, -5.0)
         set_slider!(vz2, 0.0)
 
         set_slider!(vx3, 0.0)
         set_slider!(vy3, 0.0)
-        set_slider!(vz3, 0.0)
+        set_slider!(vz3, 4.0)
 
     elseif preset_name == "Электрическое отталкивание"
         method_menu.selection[] = "Верле"

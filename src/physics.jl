@@ -30,7 +30,7 @@ function apply_pairwise_forces!(particles)
             coulomb_magnitude = k * pi.charge * pj.charge / distance^2
             gravity_magnitude = G * pi.mass * pj.mass / distance^2
 
-            coulomb_force = coulomb_magnitude * direction
+            coulomb_force = -coulomb_magnitude * direction
             gravity_force = gravity_magnitude * direction
 
             total_force = coulomb_force + gravity_force
